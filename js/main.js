@@ -35,7 +35,7 @@ function generateHTML(results) {
             <div class="flex-ctn">
                 <a class="view-btn" href="${result.recipe.url}" target="_blank">View Recipe</a>
 
-                <a href="#" title="Mark as favourite" id="fav-btn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <a href="#" title="Mark as favourite" onclick="addToFavourites()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                 </svg></a>
 
@@ -54,4 +54,38 @@ function generateHTML(results) {
 }
 
 
+// adding item to favourite list with favourite icon starts here
 
+function addToFavourites() {
+    alert('Great!')
+    // if (!isInFavourites(itemId)) {
+    //     addToLocalStorage('favourite', itemId);
+    //     updateUI(itemId);
+    // }
+}
+
+// function isInFavourites(itemId) {
+//     const favourites = getFromLocalStorage('favourites') || [];
+//     return favourites.includes(itemId);
+// }
+
+// function addToLocalStorage(key, value) {
+//     const favourites = getFromLocalStorage(key) || [];
+//     favourites.push(value);
+//     localStorage.setItem(key, JSON.stringify(favourites));
+// }
+
+// function getFromLocalStorage(key) {
+//     const storedItems = localStorage.getItem(key);
+//     return JSON.parse(storedItems);
+// }
+
+// function updateUI(itemId) {
+//     const itemElement = document.getElementById(itemId);
+//     if(itemElement) {
+//         const favouriteIcon = itemElement.querySelector('w-6');
+//         if (favouriteIcon) {
+//             favouriteIcon.style.color = 'red';
+//         }
+//     }
+// }

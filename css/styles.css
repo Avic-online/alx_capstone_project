@@ -22,7 +22,7 @@ html {
 }
 
 section{
-    min-height: 100vh;
+    min-height: 10vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -31,47 +31,7 @@ section{
     background-color: rgb(26, 26, 27);
 }
 
-.nav {
-    width: 30%;
-    height: auto;
-    margin-top: 20px;
-    margin-left: 65%;
-    overflow: hidden;
-}
-
-.nav-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    list-style: none;
-    font-size: 1.4rem;
-    background-color: gray;
-    border-radius: 4px;
-}
-.nav-item > a {
-    text-decoration: none;
-    width: 25%;
-    text-align: center;
-    overflow: hidden;
-    color: whitesmoke;
-}
-/* li > a{
-    width: auto;
-    text-decoration: none;
-    color: whitesmoke;
-} */
-.nav-item > a:hover {
-    opacity: 70%;
-}
-
-.active {
-    background-color: rgb(70, 70, 138);
-}
-
-.nav-item a:focus {
-    background-color: rgb(70, 70, 138);
-}
+/* navigation bar here */
 
 
 .container {
@@ -80,11 +40,14 @@ section{
     max-width: 1200px;
     margin: 0 auto;
 }
-.brand {
-    text-align: center;
-    font-size: 4rem;
-    color: whitesmoke;
-    margin-bottom: 30px;
+.logoChef {
+    width: 40%;
+    height: 220px;
+    margin: 10px auto;
+    align-content: center;
+}
+.logoChef > img {
+    margin-top: 10px;
 }
 form{
     width: 90%;
@@ -192,3 +155,9 @@ a > .w-8 {
 p {
     color: whitesmoke;
 }
+
+
+
+
+/* responsiveness of the website site */
+

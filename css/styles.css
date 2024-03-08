@@ -81,21 +81,34 @@ form ion-icon{
     height: 300px;
     border: 4px;
 }
+
+.item .title{
+    color: whitesmoke;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin: 20px 10px 0 0;
+}
+
+.item .item-data{
+    color: whitesmoke;
+    display: block;
+    margin-top: 10px;
+    font-size: 1.4rem;
+    letter-spacing: 0.05rem;
+    line-height: 2rem;
+}
+
 .item .flex-ctn{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.item .title{
-    color: whitesmoke;
-    font-size: 2rem;
-    font-weight: 400;
-    margin: 20px 10px 0 0;
-}
+
 .item .view-btn{
     text-decoration: none;
     background-color: #404041;
     width: 130px;
+    height: auto;
     text-align: center;
     padding: 10px;
     color: whitesmoke;
@@ -104,11 +117,26 @@ form ion-icon{
     margin-top: 20px;
     /* align-self: flex-start; */
 }
-.item .item-data{
+.item .view-btn:hover{
+    opacity: 90%;
+}
+
+a > .w-6 {
+    color: white;
+    width: 35px;
+    margin-left: 20px;
+    margin-top: 20px;
+    
+}
+a > .w-7 {
     color: whitesmoke;
-    display: block;
-    margin-top: 10px;
-    font-size: 1.4rem;
-    letter-spacing: 0.05rem;
-    line-height: 2rem;
+    width: 35px;
+    margin-top: 20px;
+    
+}
+a > .w-8 {
+    color: whitesmoke;
+    width: 35px;
+    margin-top: 20px;
+    
 }

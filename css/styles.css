@@ -18,20 +18,91 @@ html {
     font-family: 'Nunito';
     font-size: 12px;
     font-weight: 600;
-    background-color: rgb(26, 26, 27);
+    /* background-color: rgb(26, 26, 27); */
 }
 
+/* navigation bar starts here */
+
+nav {
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li {
+    height: 50px;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+nav a:hover{
+    background-color: gray;
+}
+
+nav li:first-child{
+    margin-right: auto;
+}
+
+.menu-btn{
+    display: none;
+}
+
+/* end of the navigation bar */
+
+/* this is the beginning of the sidebar navigation */
+
+.sideBar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(245, 245, 245, 0.13);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.sideBar li {
+    width: 100%;
+}
+
+.sideBar a {
+    width: 100%;
+}
+/* this is the end of the side bar navigation */
+
 section{
-    min-height: 10vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 100px 0;
-    background-color: rgb(26, 26, 27);
+    background-image: url(../images/chefs\ recipe\ app\ bg2.jpeg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    filter: brightness(50%);
 }
-
-/* navigation bar here */
 
 
 .container {
@@ -41,6 +112,7 @@ section{
     margin: 0 auto;
 }
 .logoChef {
+    border: 1px solid white;
     width: 40%;
     height: 220px;
     margin: 10px auto;
@@ -159,5 +231,20 @@ p {
 
 
 
-/* responsiveness of the website site */
+/* responsiveness of the website site with media query*/
+
+@media(max-width: 800px) {
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-btn{
+        display: block;
+    }
+}
+
+@media(max-width: 480px) {
+    .sideBar{
+        width: 100%;
+    }
+}
 

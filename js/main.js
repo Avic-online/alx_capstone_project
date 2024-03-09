@@ -7,6 +7,22 @@ let searchValue = '';
 const app_id = 'ca12959c';
 const app_key = 'c19751ea18825842d6846c57ebfd1898';
 
+
+// function to show side bar when menu icon is clicked
+
+function showSidebar(){
+    const sidebar = document.querySelector('.sideBar');
+    sidebar.style.display = 'flex'
+}
+
+
+// function to hide side bar when close icon is clicked
+
+function hideSidebar(){
+    const sidebar = document.querySelector('.sideBar');
+    sidebar.style.display = 'none'
+}
+
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     searchValue = e.target.querySelector('input').value;

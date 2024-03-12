@@ -228,7 +228,66 @@ p {
     color: whitesmoke;
 }
 
+/*____________________________________________*\
+        #FAVOURITE RECIPE PAGE STYLING
+\*____________________________________________*/
 
+.fav-h1 {
+    font-family: 'Nunito';
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.fav-ctn {
+    /* border: 3px solid black; */
+    height: auto;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
+    margin-bottom: 20px;
+}
+
+.fav-card {
+    border: 1px solid red;
+    background-color: orange;
+    width: 100%;
+    height: 100px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.fav-card img {
+    width: 20%;
+}
+
+.fav-card .title{
+    color: whitesmoke;
+    font-weight: 4600;
+}
+
+.fav-card .view-btn{
+    text-decoration: none;
+    background-color: #404041;
+    width: 100px;
+    height: auto;
+    text-align: center;
+    padding: 10px;
+    color: whitesmoke;
+    border-radius: 2px;
+}
+.fav-card .view-btn:hover{
+    opacity: 90%;
+}
+
+
+/* .fav-recipe-page{
+    padding-block-end: 24px;
+}
+.fav-recipe-page .section-title {
+    line-height: 40px;
+} */
 
 
 /* responsiveness of the website site with media query*/

@@ -7,6 +7,11 @@ let searchValue = '';
 const app_id = 'ca12959c';
 const app_key = 'c19751ea18825842d6846c57ebfd1898';
 
+// const addFav = document.querySelector('.w-6');
+// let addFavValue = '';
+// const favListKey = 'favouriteRecipes';
+// const favResultDiv = document.querySelector('.fav-ctn');
+
 
 // function to show side bar when menu icon is clicked
 
@@ -23,11 +28,17 @@ function hideSidebar(){
     sidebar.style.display = 'none'
 }
 
+// event listener to fetch api when an argument is passed on the search input
+
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     searchValue = e.target.querySelector('input').value;
     fetchAPI();
 });
+
+// addFav.addEventListener('click', addToFavourites);
+
+// function to fetch api from Edamam
 
 async function fetchAPI(){
     const accessPoint = `https://api.edamam.com/api/recipes/v2?type=${'public'}&q=${searchValue}&app_id=${app_id}&app_key=${app_key}`;
@@ -36,6 +47,8 @@ async function fetchAPI(){
     generateHTML(data.hits);
     console.log(data);
 }
+
+// function to generate the api fetched from edamam in html
 
 function generateHTML(results) {
     let generatedHTML = '';
@@ -51,7 +64,7 @@ function generateHTML(results) {
             <div class="flex-ctn">
                 <a class="view-btn" href="${result.recipe.url}" target="_blank">View Recipe</a>
 
-                <a href="#" title="Mark as favourite" onclick="addToFavourites()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <a href="#" title="Mark as favourite"  onclick="addToFavourites('${result.recipe.label}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                 </svg></a>
 
@@ -72,36 +85,35 @@ function generateHTML(results) {
 
 // adding item to favourite list with favourite icon starts here
 
-function addToFavourites() {
-    alert('Great!')
-    // if (!isInFavourites(itemId)) {
-    //     addToLocalStorage('favourite', itemId);
-    //     updateUI(itemId);
-    // }
+addFav.addEventListener('click', addToFavourites())
+
+function addToFavourites(recipeLabel) {
+    // Retrieve the current favorites from local storage
+    const favourites = getFromLocalStorage(favListKey) || [];
+
+    // Check if the recipe is already in favorites
+    if (!favourites.includes(recipeLabel)) {
+        // Add the recipe label to the favorites
+        favourites.push(recipeLabel);
+
+        // Save the updated favorites back to local storage
+        saveToLocalStorage(favListKey, favourites);
+
+        // Optional: Provide feedback to the user
+        alert(`${recipeLabel} added to favorites!`);
+            
+    } else {
+        // Optional: Provide feedback if the recipe is already in favorites
+        alert(`${recipeLabel} is already in your favorites!`);
+    }
 }
 
-// function isInFavourites(itemId) {
-//     const favourites = getFromLocalStorage('favourites') || [];
-//     return favourites.includes(itemId);
-// }
+function saveToLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
 
-// function addToLocalStorage(key, value) {
-//     const favourites = getFromLocalStorage(key) || [];
-//     favourites.push(value);
-//     localStorage.setItem(key, JSON.stringify(favourites));
-// }
+function getFromLocalStorage(key) {
+    const storedItems = localStorage.getItem(key);
 
-// function getFromLocalStorage(key) {
-//     const storedItems = localStorage.getItem(key);
-//     return JSON.parse(storedItems);
-// }
-
-// function updateUI(itemId) {
-//     const itemElement = document.getElementById(itemId);
-//     if(itemElement) {
-//         const favouriteIcon = itemElement.querySelector('w-6');
-//         if (favouriteIcon) {
-//             favouriteIcon.style.color = 'red';
-//         }
-//     }
-// }
+    return JSON.parse(storedItems);
+}

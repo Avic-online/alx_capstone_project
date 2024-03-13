@@ -1,16 +1,14 @@
 // javascript code for our chefs recipe app 
 
-const container = document.querySelector('.container');
+// const container = document.querySelector('.container');
 const searchForm = document.querySelector('form');
 const searchResultDiv = document.querySelector('.search-result');
 let searchValue = '';
 const app_id = 'ca12959c';
 const app_key = 'c19751ea18825842d6846c57ebfd1898';
 
-// const addFav = document.querySelector('.w-6');
-// let addFavValue = '';
-// const favListKey = 'favouriteRecipes';
-// const favResultDiv = document.querySelector('.fav-ctn');
+
+const favListKey = 'favouriteRecipes';
 
 
 // function to show side bar when menu icon is clicked
@@ -64,7 +62,7 @@ function generateHTML(results) {
             <div class="flex-ctn">
                 <a class="view-btn" href="${result.recipe.url}" target="_blank">View Recipe</a>
 
-                <a href="#" title="Mark as favourite"  onclick="addToFavourites('${result.recipe.label}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <a href="#" title="Mark as favourite"  onclick="addToFavourites('${result.recipe.label},${result.recipe.url}, ${result.recipe.image}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                 </svg></a>
 
@@ -85,7 +83,7 @@ function generateHTML(results) {
 
 // adding item to favourite list with favourite icon starts here
 
-addFav.addEventListener('click', addToFavourites())
+// addFav.addEventListener('click', addToFavourites())
 
 function addToFavourites(recipeLabel) {
     // Retrieve the current favorites from local storage
@@ -95,20 +93,20 @@ function addToFavourites(recipeLabel) {
     if (!favourites.includes(recipeLabel)) {
         // Add the recipe label to the favorites
         favourites.push(recipeLabel);
-
         // Save the updated favorites back to local storage
         saveToLocalStorage(favListKey, favourites);
 
         // Optional: Provide feedback to the user
-        alert(`${recipeLabel} added to favorites!`);
+        alert(`${recipeLabel} added to favourites!`);
             
     } else {
         // Optional: Provide feedback if the recipe is already in favorites
-        alert(`${recipeLabel} is already in your favorites!`);
+        alert(`${recipeLabel} is already in your favuorites!`);
     }
 }
 
 function saveToLocalStorage(key, value) {
+    
     localStorage.setItem(key, JSON.stringify(value));
 }
 
@@ -116,4 +114,47 @@ function getFromLocalStorage(key) {
     const storedItems = localStorage.getItem(key);
 
     return JSON.parse(storedItems);
+}
+
+
+function DisplayFavourites(Key, displayFav) {
+    const storedItems = localStorage.getItem(Key);
+    const displayDiv = document.getElementById(displayFav);
+
+    if (storedItems) {
+        const favorites = JSON.parse(storedItems);
+
+        // Clear the existing content of the displayDiv
+        displayDiv.innerHTML = '';
+
+        favorites.forEach(favorite => {
+            // Create elements for each favorite item
+            const favoriteItem = document.createElement('div');
+            favoriteItem.classList.add('fav-card');
+
+            const imageElement = document.createElement('img');
+            // imageElement.src = favorite.img;
+            imageElement.src = favorite[2];
+            imageElement.alt = 'Favorite Recipe Image';
+
+            const labelElement = document.createElement('p');
+            labelElement.textContent = `Label: ${favorite.label}`;
+
+            const urlElement = document.createElement('a');
+            urlElement.href = favorite.url;
+            urlElement.target = '_blank';
+            urlElement.textContent = 'View Recipe';
+
+            // Append elements to the favoriteItem div
+            favoriteItem.appendChild(imageElement);
+            favoriteItem.appendChild(labelElement);
+            favoriteItem.appendChild(urlElement);
+
+            // Append the favoriteItem div to the displayDiv
+            displayDiv.appendChild(favoriteItem);
+        });
+    } else {
+        // Display a message when there are no favorites
+        displayDiv.innerHTML = '<p class="favWhite">No favorites available.</p>';
+    }
 }

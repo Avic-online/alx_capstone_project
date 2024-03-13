@@ -34,8 +34,8 @@
 
     <main>
         <h1 class="fav-h1">Here is your Favourite Recipes!</h1>
-        <div class="fav-ctn" id="displayFav" onload="getFromLocalStorage(key)">
-            <div class="fav-card">
+        <div class="fav-ctn" id="displayFav">
+            <!-- <div class="fav-card">
                 <img src="images/comfort-food-recipes.png" alt="image of favourite recipe">
                 <h2 class="title">Title</h2>
                 <a class="view-btn" href="#">View Recipe</a>
@@ -52,12 +52,15 @@
                 <h2 class="title">Title</h2>
                 <a class="view-btn" href="#">View Recipe</a>
                 <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-            </div>
+            </div> -->
         </div>
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        DisplayFavourites('favouriteRecipes', 'displayFav')
+    </script>
     <!-- <script src="js/fav.js"></script> -->
 </body>
 </html>

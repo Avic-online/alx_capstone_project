@@ -1,7 +1,7 @@
 // javascript code for our chefs recipe app 
 
 // const container = document.querySelector('.container');
-const searchForm = document.querySelector('form');
+const searchForm = document.querySelector('.formFetcher');
 const searchResultDiv = document.querySelector('.search-result');
 let searchValue = '';
 const app_id = 'ca12959c';
@@ -30,7 +30,7 @@ function hideSidebar(){
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    searchValue = e.target.querySelector('input').value;
+    searchValue = e.target.querySelector('.inputMain').value;
     fetchAPI();
 });
 

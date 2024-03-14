@@ -18,7 +18,7 @@ html {
     font-family: 'Nunito';
     font-size: 12px;
     font-weight: 600;
-    /* background-color: rgb(26, 26, 27); */
+    background-color: rgb(19, 18, 18);
 }
 
 /* navigation bar starts here */
@@ -91,17 +91,14 @@ nav li:first-child{
 /* this is the end of the side bar navigation */
 
 section{
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: auto;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 100px 0;
-    background-image: url(../images/chefs\ recipe\ app\ bg2.jpeg);
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position: center;
-    filter: brightness(50%);
+    background-color: rgb(19, 18, 18);
 }
 
 
@@ -121,14 +118,14 @@ section{
 .logoChef > img {
     margin-top: 10px;
 }
-form{
+.formFetcher{
     width: 90%;
     max-width: 400px;
     margin: 20px auto;
     background-color: whitesmoke;
     border-radius: 4px;
 }
-form input{
+.formFetcher .inputMain{
     width: 90%;
     background-color: transparent;
     padding: 10px;
@@ -136,7 +133,7 @@ form input{
     outline: none;
     font-size: 2rem;
 }
-form ion-icon{
+.formFetcher ion-icon{
     width: 9%;
     font-size: 3rem;
     margin: -9px;
@@ -221,6 +218,22 @@ a > .w-8 {
     
 }
 
+
+/* style for the user review when the review button is clicked */
+
+#review-ctn {
+    border: 3px solid white;
+    width: 30%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 35%;
+}
+
+#formReview {
+    background-color: yellow;
+}
 
 /* general page styling here */
 

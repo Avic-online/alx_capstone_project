@@ -19,7 +19,7 @@
             <li><a href="review.html">Review</a></li>
         </ul>
         <ul>
-            <li><a><img src="images/Cheft-01.png" alt="logo of chefs recipe"></a></li>
+            <li><a><img src="images/Cheft-02-icon.pngs" alt="logo of chefs recipe"></a></li>
             <li><a href="index.html" class="hideOnMobile">Recipe</a></li>
             <li><a href="favourite.html" class="hideOnMobile">Favourite</a></li>
             <li><a href="shop.html" class="hideOnMobile">Shop</a></li>
@@ -27,6 +27,14 @@
             <li class="menu-btn" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
         </ul>
     </nav>
+    <!-- <div id="review-ctn">
+        <form id="formReview">
+            <label for="userName">USER NAME</label><br>
+            <input type="text" id="userName" name="user_name" placeholder="please enter first name"><br>
+            <label for="reviewRecipe">CSS</label><br>
+            <input type="text" id="reviewRecipe" name="review_recipe" placeholder="please tell us about your view on this recipe here" minlength="200"><br>
+        </form>
+    </div> -->
 
     <section>
         <div class="container">
@@ -35,8 +43,8 @@
                 <img src="images/Cheft-01.png" alt="logo for chefs recipe">
             </div>
             <!-- the next lines of code is for the search input form -->
-            <form>
-                <input type="text" placeholder="Search Your Recipe...">
+            <form class="formFetcher">
+                <input type="text" placeholder="Search Your Recipe..." class="inputMain">
                 <ion-icon name="search"></ion-icon>
             </form>
             <!-- the next lines of code is to display the cards of user search result -->

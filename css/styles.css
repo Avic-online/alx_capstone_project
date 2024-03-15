@@ -1,11 +1,16 @@
 /* CSS file for our chef recipe app
 The beauty of the client's side of our page */
 
-:root{
-    background-color: #404041
+:root 
+{
+ --primary-color:rgb(19, 18, 18);
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* beginning of main styling for the pages */
+
 *{
     padding: 0;
     margin: 0;
@@ -22,7 +27,7 @@ html {
     font-family: 'Nunito';
     font-size: 12px;
     font-weight: 600;
-    background-color: rgb(19, 18, 18);
+    background-color: var(--primary-color);
 }
 
 /* navigation bar starts here */
@@ -94,6 +99,9 @@ nav li:first-child{
 }
 /* this is the end of the side bar navigation */
 
+/* beginning section styling where the main logo, search
+bar and the recipes are displayed */
+
 section{
     /* min-height: 100vh; */
     height: auto;
@@ -102,7 +110,7 @@ section{
     justify-content: center;
     align-items: center;
     padding: 100px 0;
-    background-color: rgb(19, 18, 18);
+    background-color: var(--primary-color);
 }
 
 
@@ -242,7 +250,7 @@ a > .w-8 {
     margin-left: 70%;
 } */
 
-/* general page styling here */
+/* general page starts styling here */
 
 p {
     color: whitesmoke;

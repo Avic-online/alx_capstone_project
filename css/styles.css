@@ -8,6 +8,9 @@ The beauty of the client's side of our page */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* resource for 5 star rating */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
 
 /* beginning of main styling for the pages */
 
@@ -234,16 +237,55 @@ a > .w-8 {
 /* style for the user review when the review button is clicked */
 
  #review-ctn {
-    background-color: rgb(38, 36, 36);
+    border: 2px solid white;
+    /* background-color: rgb(38, 36, 36); */
     width: 30%;
-    height: 200px;
+    height: auto;
     display: none;
     flex-direction: column;
     align-items: center;
     margin-left: 35%;
     margin-top: 20px;
-    padding-top: 20px;
+    padding: 20px 20px;
     color:whitesmoke
+}
+
+.rate-box {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    gap: 0.1rem;
+}
+.rate-box > p {
+    color: whitesmoke;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.rate-box input {
+    display: none;
+}
+.rate-box input:hover ~ .star:before {
+    color: rgba(255, 204, 51, 0.5);
+}
+.rate-box input:active + .star:before {
+    transform: scale(0.9);
+}
+.rate-box input:checked ~ .star:before {
+    color: #ffcc33;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.8);
+}
+.rate-box .star:before {
+    content: "★";
+    display: inline-block;
+    font-family: "Potta One", cursive;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #0000;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+    background-color: #aaa;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: all 0.3s;
 }
 
 #reviewSubmit {

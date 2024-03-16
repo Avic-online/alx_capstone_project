@@ -6,6 +6,7 @@
     <title>CHEFS RECIPE FINDER</title>
     <!-- OWN CSS FILES-->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <!-- END OWN CSS FILES-->
 </head>
 <body>
@@ -28,10 +29,24 @@
         </ul>
     </nav>
     <div id="review-ctn">
+        <h3>Kindly rate your experience from this application!</h3><br>
         <form>
             <label for="userName">USER NAME: </label><br>
             <input type="text" id="userName" name="user_name" placeholder="please enter first name"><br>
             <br>
+            <div class="rate-box">
+                <p>STAR RATING</p>
+                <input type="radio" name="star" id="star0"/>
+                <label class="star" for="star0"></label>
+                <input type="radio" name="star" id="star1"/>
+                <label class="star" for="star1"></label>
+                <input type="radio" name="star" id="star2" checked="checked"/>
+                <label class="star" for="star2"></label>
+                <input type="radio" name="star" id="star3"/>
+                <label class="star" for="star3"></label>
+                <input type="radio" name="star" id="star4"/>
+                <label class="star" for="star4"></label><br>
+            </div><br>
             <label for="reviewRecipe">REVIEW: </label><br>
             <textarea rows="5" cols="33" id="reviewRecipe" placeholder="please let us know your view on this recipe!">
             </textarea><br>
@@ -65,6 +80,7 @@
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="js/main.js"></script>
 </body>

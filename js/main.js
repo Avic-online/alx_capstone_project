@@ -160,7 +160,7 @@ function DisplayFavourites(Key, displayFav) {
 }
 
 function addReview(){
-    const add_review = document.querySelector('#addRating');
+    const add_review = document.querySelector('#review-ctn');
     add_review.style.display = 'flex'
 }
 function reviewSubmit() {

@@ -116,7 +116,6 @@ section{
     background-color: var(--primary-color);
 }
 
-
 .container {
     width: 90%;
     height: auto;
@@ -251,43 +250,6 @@ a > .w-8 {
     overflow: auto;
 }
 
-.rate-box {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: start;
-    gap: 0.1rem;
-}
-.rate-box > p {
-    color: whitesmoke;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-.rate-box input {
-    display: none;
-}
-.rate-box input:hover ~ .star:before {
-    color: rgba(255, 204, 51, 0.5);
-}
-.rate-box input:active + .star:before {
-    transform: scale(0.9);
-}
-.rate-box input:checked ~ .star:before {
-    color: #ffcc33;
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -3px -3px 8px rgba(255, 255, 255, 0.8);
-}
-.rate-box .star:before {
-    content: "★";
-    display: inline-block;
-    font-family: "Potta One", cursive;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #0000;
-    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
-    background-color: #aaa;
-    background-clip: text;
-    -webkit-background-clip: text;
-    transition: all 0.3s;
-}
 
 #reviewSubmit {
     margin-left: 70%;
@@ -353,24 +315,56 @@ p {
 .fav-card .view-btn:hover{
     opacity: 90%;
 }
-
-
-/* .fav-recipe-page{
-    padding-block-end: 24px;
-}
-.fav-recipe-page .section-title {
-    line-height: 40px;
-} */
-
 /*____________________________________________*\
         #REVIEW RECIPE PAGE STYLING
 \*____________________________________________*/
 
-#reviewRetrieve {
-    border: 2px solid white;
+#reviewPage-ctn{
+    width: 100%;
     height: auto;
-    width: 60%;
-    margin-left: 20%;
+    margin-left: 0;
+    display: flex;
+    flex-direction: row;
+}
+#reviewAdLeft{
+    background-color: var(--primary-color);
+    border: 1px solid white;
+    width: 25%;
+    height: 100vh;
+}
+#reviewMain {
+    background-color: var(--primary-color);
+    width: 50%;
+    height: 100vh;
+
+}
+#reviewAdRight{
+    background-color: var(--primary-color);
+    border: 1px solid white;
+    width: 25%;
+    height: 100vh;
+
+}
+#reviewAdLeft > p {
+    color: whitesmoke;
+    text-align: center;
+    padding-top: 100%;
+    text-transform: lowercase;
+    font-style: italic;
+    opacity: 50%;
+}
+#reviewAdRight > p {
+    color: whitesmoke;
+    text-align: center;
+    padding-top: 100%;
+    text-transform: lowercase;
+    font-style: italic;
+    opacity: 50%;
+}
+#reviewRetrieve {
+    height: auto;
+    width: 80%;
+    margin-left: 10%;
     margin-top: 2%;
     margin-bottom: 20px;
 }
@@ -392,6 +386,39 @@ p {
     color: whitesmoke;
 }
 
+/* layout of review items */
+
+.review {
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgb(37, 37, 37);
+    display: flex;
+    overflow: auto;
+}
+
+.review p {
+    color: whitesmoke;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 12px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.review p:first-child{
+    font-size: 18px;
+    padding-right: 20%;
+}
+.review p:last-child{
+    padding-left: 20%;
+}
+
+/* .review {
+    background-color: yellow;
+} */
+
 
 
 /* responsiveness of the website site with media query*/
@@ -403,11 +430,48 @@ p {
     .menu-btn{
         display: block;
     }
+    /* responsiveness off the reviews on tablets of screen 800px */
+
+    .review {
+        height: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: rgb(37, 37, 37);
+        display: flex;
+        flex-direction: column;
+    }
+    .review p:first-child{
+        font-size: 18px;
+        padding-right: 0%;
+    }
+    .review p:last-child{
+        padding-left: 0%;
+        font-style: italic;
+    }
 }
 
 @media(max-width: 480px) {
     .sideBar{
         width: 100%;
+    }
+    /* mobile screen media query for reviews on review page */
+    .review {
+        height: auto;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: rgb(37, 37, 37);
+        display: flex;
+        flex-direction: column;
+    }
+    .review p:first-child{
+        font-size: 18px;
+        padding-right: 0%;
+        color: red;
+    }
+    .review p:last-child{
+        padding-left: 0%;
     }
 }
 

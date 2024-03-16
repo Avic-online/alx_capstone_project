@@ -27,29 +27,19 @@
             <li class="menu-btn" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
         </ul>
     </nav>
+    <div id="reviewPage-ctn">
+        <div id="reviewAdLeft"><p>ADD WILL BE DISPLAYED HERE</p></div>
+        <div id="reviewMain">
+            <h1 class="review-h1">These are views on Chefs Recipe</h1>
+            <div id="reviewRetrieve">
 
-    <main>
-        <h1 class="review-h1">These are views on Chefs Recipe</h1>
-        <div id="reviewRetrieve">
-
+            </div>
         </div>
-    </main>
+        <div id="reviewAdRight"><p>ADD WILL BE DISPLAYED HERE</p></div>
+    </div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        const json = localStorage.getItem('formReview');
-        const obj = JSON.parse(json);
-
-        for (key in obj) {
-            let markup =
-            `
-            <div class="review-card">
-                <span>${key}: ${obj[key]}</span>
-            </div>
-            `;
-            document.getElementById('reviewRetrieve').innerHTML += markup;
-        }
-    </script>
+    <script src="js/review.js"></script>
 </body>
 </html>

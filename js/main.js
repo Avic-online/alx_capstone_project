@@ -9,8 +9,6 @@ const app_key = 'c19751ea18825842d6846c57ebfd1898';
 
 const favListKey = 'favouriteRecipes';
 
-const reviewForm = document.querySelector('#formReview');
-
 
 // function to show side bar when menu icon is clicked
 
@@ -34,8 +32,6 @@ searchForm.addEventListener('submit', (e) => {
     searchValue = e.target.querySelector('.inputMain').value;
     fetchAPI();
 });
-
-// addFav.addEventListener('click', addToFavourites);
 
 // function to fetch api from Edamam
 
@@ -82,7 +78,7 @@ function generateHTML(results) {
 }
 
 
-// adding item to favourite list with favourite icon starts here
+//============= adding item to favourite list with favourite icon starts here =====
 
 // addFav.addEventListener('click', addToFavourites())
 
@@ -160,30 +156,45 @@ function DisplayFavourites(Key, displayFav) {
     }
 }
 
-// user review javascript functions code starts here
-
-reviewForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    var rf = new FormData(reviewForm);
-    const obj = Object.fromEntries(rf);
-
-    const json = JSON.stringify(obj);
-
-    localStorage.setItem('formReview', json);
-
-    alert('Thank you for submitting your review!')
-
-    window.location.href = "review.html"
-})
+// -----user review javascript functions code starts here------
 
 function addReview(){
     const add_review = document.querySelector('#review-ctn');
     add_review.style.display = 'flex'
 }
-function reviewSubmit() {
-    const review_submit = document.getElementById('#reviewSubmit');
-    alert('thank you for reviewing us!')
+
+// code for submission of user input to local storage
+const submitBtn = document.getElementById('submitBtn');
+
+// Add event listener to the form submission
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    //user data in local storage called
+    storeUserData();
+});
+
+function storeUserData() {
+    const username = document.getElementById('username').value;
+    const rating = document.getElementById('rating').value;
+    const description = document.getElementById('description').value;
+
+    // Retrieve existing reviews from local storage || initialize an empty array
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    // Create a new review object
+    const newReview = {
+        username: username,
+        rating: rating,
+        description: description
+    };
+
+    // Add the new review to the array of reviews
+    reviews.push(newReview);
+
+    // Store the updated reviews array in local storage
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+
+    // Optional: Provide feedback to the user
+    alert('Review submitted successfully!');
 }
-
-
-// <a href="#" title="Mark as favourite"  onclick="addToFavourites('${result.recipe.label},${result.recipe.url}, ${result.recipe.image}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"></svg>

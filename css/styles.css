@@ -247,7 +247,8 @@ a > .w-8 {
     margin-left: 35%;
     margin-top: 20px;
     padding: 20px 20px;
-    color:whitesmoke
+    color:whitesmoke;
+    overflow: auto;
 }
 
 .rate-box {
@@ -360,6 +361,37 @@ p {
 .fav-recipe-page .section-title {
     line-height: 40px;
 } */
+
+/*____________________________________________*\
+        #REVIEW RECIPE PAGE STYLING
+\*____________________________________________*/
+
+#reviewRetrieve {
+    border: 2px solid white;
+    height: auto;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 2%;
+    margin-bottom: 20px;
+}
+.review-card {
+    border: 1px solid red;
+    background-color: orange;
+    width: 100%;
+    height: 100px;
+    padding: 10px 10px;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-evenly; */
+}
+.review-h1{
+    font-family: 'Nunito';
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5%;
+    color: whitesmoke;
+}
+
 
 
 /* responsiveness of the website site with media query*/

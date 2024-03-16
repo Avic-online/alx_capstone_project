@@ -28,11 +28,28 @@
         </ul>
     </nav>
 
-    <section>
-        <p>This is the review page</p>
-    </section>
+    <main>
+        <h1 class="review-h1">These are views on Chefs Recipe</h1>
+        <div id="reviewRetrieve">
+
+        </div>
+    </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        const json = localStorage.getItem('formReview');
+        const obj = JSON.parse(json);
+
+        for (key in obj) {
+            let markup =
+            `
+            <div class="review-card">
+                <span>${key}: ${obj[key]}</span>
+            </div>
+            `;
+            document.getElementById('reviewRetrieve').innerHTML += markup;
+        }
+    </script>
 </body>
 </html>

@@ -7,8 +7,9 @@ let searchValue = '';
 const app_id = 'ca12959c';
 const app_key = 'c19751ea18825842d6846c57ebfd1898';
 
-
 const favListKey = 'favouriteRecipes';
+
+const reviewForm = document.querySelector('#formReview');
 
 
 // function to show side bar when menu icon is clicked
@@ -158,6 +159,22 @@ function DisplayFavourites(Key, displayFav) {
         displayDiv.innerHTML = '<p class="favWhite">No favorites available.</p>';
     }
 }
+
+// user review javascript functions code starts here
+
+reviewForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    var rf = new FormData(reviewForm);
+    const obj = Object.fromEntries(rf);
+
+    const json = JSON.stringify(obj);
+
+    localStorage.setItem('formReview', json);
+
+    alert('Thank you for submitting your review!')
+
+    window.location.href = "review.html"
+})
 
 function addReview(){
     const add_review = document.querySelector('#review-ctn');

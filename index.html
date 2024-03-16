@@ -30,7 +30,7 @@
     </nav>
     <div id="review-ctn">
         <h3>Kindly rate your experience from this application!</h3><br>
-        <form>
+        <form id="formReview">
             <label for="userName">USER NAME: </label><br>
             <input type="text" id="userName" name="user_name" placeholder="please enter first name"><br>
             <br>
@@ -50,7 +50,7 @@
             <label for="reviewRecipe">REVIEW: </label><br>
             <textarea rows="5" cols="33" id="reviewRecipe" placeholder="please let us know your view on this recipe!">
             </textarea><br>
-            <button id="reviewSubmit" onclick="reviewSubmit()">SUBMIT</button>
+            <button type="submit" id="reviewSubmit" onclick="reviewSubmit()">SUBMIT</button>
         </form>
     </div>
 

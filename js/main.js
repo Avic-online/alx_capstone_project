@@ -67,7 +67,7 @@ function generateHTML(results) {
                     <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                 </svg></a>
 
-                <a href="#" title="Buy all ingredients for this recipe"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6">
+                <a href="#" title="Buy all ingredients for this recipe" class="shop-icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6">
                     <path d="M2.25 2.25a.75.75 0 0 0 0 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 0 0-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 0 0 0-1.5H5.378A2.25 2.25 0 0 1 7.5 15h11.218a.75.75 0 0 0 .674-.421 60.358 60.358 0 0 0 2.96-7.228.75.75 0 0 0-.525-.965A60.864 60.864 0 0 0 5.68 4.509l-.232-.867A1.875 1.875 0 0 0 3.636 2.25H2.25ZM3.75 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM16.5 20.25a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" />
                 </svg></a>
             </div>
@@ -75,12 +75,17 @@ function generateHTML(results) {
         `
     })
     searchResultDiv.innerHTML = generatedHTML;
+
+    // Add event listeners to shopping icons
+    document.querySelectorAll('.shop-icon').forEach(icon => {
+        icon.addEventListener('click', handleShoppingIconClick);
+    });
 }
 
 
 //============= adding item to favourite list with favourite icon starts here =====
 
-// addFav.addEventListener('click', addToFavourites())
+
 
 function addToFavourites(recipeLabel) {
     // Retrieve the current favorites from local storage
@@ -197,4 +202,64 @@ function storeUserData() {
 
     // Optional: Provide feedback to the user
     alert('Review submitted successfully!');
+}
+
+// ======== function to shop the ingredients of any of the item when the shoping icon is clicked===
+
+
+// async function handleShoppingIconClick(event) {
+//     event.preventDefault(); // Prevent default link behavior
+
+//     const item = event.target.closest('.item');
+//     const label = item.querySelector('.title').textContent;
+//     const ingredientLines = item.querySelector('.item-data').textContent.split('\n');
+
+//     // Call the function to add or update the recipe ingredients in the shopping list
+//     addToShoppingList(label, ingredientLines);
+// }
+
+// function addToShoppingList(label, ingredients) {
+//     // Retrieve existing shopping list from local storage or initialize an empty array
+//     let shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
+
+//     // Check if the label already exists in the shopping list
+//     const existingItemIndex = shoppingList.findIndex(item => item.label === label);
+
+//     if (existingItemIndex !== -1) {
+//         // If the label already exists, update the ingredients
+//         shoppingList[existingItemIndex].ingredients = ingredients;
+//     } else {
+//         // If the label doesn't exist, add a new item to the shopping list
+//         shoppingList.push({ label: label, ingredients: ingredients });
+//     }
+
+//     // Store the updated shopping list array in local storage
+//     localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+
+//     // Optional: Provide feedback to the user
+//     alert(`${label} ingredients added to the shopping list!`);
+// }
+
+async function handleShoppingIconClick(event) {
+    event.preventDefault(); // Prevent default link behavior
+
+    const item = event.target.closest('.item');
+    const label = item.querySelector('.title').textContent;
+    const ingredientLines = item.querySelector('.item-data').textContent.split('\n');
+
+    // Call the function to replace the shopping list with a new one
+    replaceShoppingList([{ label: label, ingredients: ingredientLines }], label);
+}
+
+function replaceShoppingList(newShoppingList, label) {
+    // Store the new shopping list array in local storage
+    localStorage.setItem('shoppingList', JSON.stringify(newShoppingList));
+
+    // Display a prompt to the user indicating the item has been added to the shopping list
+    const confirmation = confirm(`${label} ingredients added to the shopping list! Click OK to go shopping!`);
+    
+    // Redirect the user to another HTML page if they click "OK"
+    if (confirmation) {
+        window.location.href = 'shop.html';
+    }
 }

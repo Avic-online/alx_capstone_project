@@ -133,10 +133,38 @@ section{
 .logoChef > img {
     margin-top: 10px;
 }
+
+.search-wrapper{
+    height: auto;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    overflow: hidden;
+}
+
+.main-search{
+    width: 15%;
+    max-width: 100px;
+    margin: 20px auto;
+    margin-left: 2px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    border: none;
+    font-size: 1.8rem;
+    color: gray;
+}
+.main-search:hover{
+    background-color: rgb(110, 108, 108);
+    color: rgb(183, 181, 181);
+    cursor: pointer;
+}
+
 .formFetcher{
     width: 90%;
     max-width: 400px;
     margin: 20px auto;
+    margin-left: 10px;
     background-color: whitesmoke;
     border-radius: 4px;
 }
@@ -240,7 +268,7 @@ a > .w-8 {
     border: 2px solid white;
     width: 30%;
     height: auto;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin-left: 35%;
@@ -248,24 +276,25 @@ a > .w-8 {
     color:whitesmoke;
     overflow: auto;
     background-color: rgb(27, 26, 26);
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 10px;
 }
 
 #review-ctn > h3 {
     color: white;
     font-size: 16px;
-    margin-bottom: 20px;
-    opacity: 80%;
+    margin:10px 10px;
+    opacity: 60%;
 }
 
 #submitBtn {
     margin-left: 70%;
+    margin-bottom: 10px;
     background-color: #404041;
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     cursor: pointer;
     font-size: 16px;
 } 
@@ -552,6 +581,13 @@ a svg:hover {
 /* responsiveness of the website site with media query*/
 
 @media(max-width: 800px) {
+    .logoChef {
+        border: 1px solid white;
+        width: 40%;
+        height: 180px;
+        margin: 10px auto;
+        align-content: center;
+    }
     .hideOnMobile{
         display: none;
     }
@@ -582,6 +618,28 @@ a svg:hover {
 @media(max-width: 480px) {
     .sideBar{
         width: 100%;
+    }
+    .logoChef {
+        border: 1px solid white;
+        width: 50%;
+        height: 120px;
+        margin: 10px auto;
+        align-content: center;
+    }
+    .search-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+    .main-search{
+        width: 20%;
+        max-width: 150px;
+        margin: -10px 150px;
+        margin-bottom: 5px;
+        background-color: whitesmoke;
+        border-radius: 4px;
+        border: none;
+        font-size: 1.8rem;
+        color: gray;
     }
 
     /* mobile screen media query for favourite page */

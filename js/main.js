@@ -2,6 +2,7 @@
 
 // const container = document.querySelector('.container');
 const searchForm = document.querySelector('.formFetcher');
+const mainSearchBTN = document.querySelector('.main-search')
 const searchResultDiv = document.querySelector('.search-result');
 let searchValue = '';
 const app_id = 'ca12959c';
@@ -26,10 +27,16 @@ function hideSidebar(){
 }
 
 // event listener to fetch api when an argument is passed on the search input
-
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     searchValue = e.target.querySelector('.inputMain').value;
+    fetchAPI();
+});
+
+// event listener when the search button is clicked
+mainSearchBTN.addEventListener('click', function(event) {
+    event.preventDefault();
+    searchValue = document.querySelector('.inputMain').value;
     fetchAPI();
 });
 

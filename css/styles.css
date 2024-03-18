@@ -268,7 +268,7 @@ a > .w-8 {
     border: 2px solid white;
     width: 30%;
     height: auto;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     margin-left: 35%;
@@ -276,7 +276,7 @@ a > .w-8 {
     color:whitesmoke;
     overflow: auto;
     background-color: rgb(27, 26, 26);
-    /* padding: 20px; */
+    padding-right: 20px;
     border-radius: 10px;
 }
 
@@ -285,6 +285,12 @@ a > .w-8 {
     font-size: 16px;
     margin:10px 10px;
     opacity: 60%;
+    overflow: hidden;
+}
+
+#userInputForm{
+    width: 90%;
+    margin-left: 20px;
 }
 
 #submitBtn {
@@ -594,6 +600,9 @@ a svg:hover {
     .menu-btn{
         display: block;
     }
+    #submitBtn {
+        margin-left: 40%;
+    }
     /* responsiveness off the reviews on tablets of screen 800px */
 
     .review {
@@ -641,6 +650,15 @@ a svg:hover {
         font-size: 1.8rem;
         color: gray;
     }
+    #userInputForm{
+        width: 50%;
+        margin-left: -40px;
+
+    }
+    #review-ctn > h3 {
+        color: red;
+        font-size: 12px;
+    }
 
     /* mobile screen media query for favourite page */
     .fav-card {
@@ -685,4 +703,3 @@ a svg:hover {
         padding: 5px 5px;
     }
 }
-

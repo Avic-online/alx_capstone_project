@@ -8,8 +8,6 @@ let searchValue = '';
 const app_id = 'ca12959c';
 const app_key = 'c19751ea18825842d6846c57ebfd1898';
 
-const favListKey = 'favouriteRecipes';
-
 
 // function to show side bar when menu icon is clicked
 

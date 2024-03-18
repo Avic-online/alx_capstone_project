@@ -59,7 +59,7 @@ function generateHTML(results) {
             <div class="flex-ctn">
                 <a class="view-btn" href="${result.recipe.url}" target="_blank">View Recipe</a>
 
-                <a href="#" title="Mark as favourite"  onclick="addToFavourites('${result.recipe.label}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <a href="#" title="Mark as favourite" class="favou-icon" onclick="addToFavorites('${result.recipe.label}', '${result.recipe.image}', '${result.recipe.url}')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                 </svg></a>
 
@@ -74,11 +74,17 @@ function generateHTML(results) {
         </div>
         `
     })
+    // generate inner html in the search result div
     searchResultDiv.innerHTML = generatedHTML;
 
     // Add event listeners to shopping icons
     document.querySelectorAll('.shop-icon').forEach(icon => {
         icon.addEventListener('click', handleShoppingIconClick);
+    });
+
+    // Add event listeners to favourite icon
+    document.querySelectorAll('.favou-icon').forEach(icon => {
+        icon.addEventListener('click', addToFavorites);
     });
 }
 
@@ -86,80 +92,44 @@ function generateHTML(results) {
 //============= adding item to favourite list with favourite icon starts here =====
 
 
+async function addToFavorites(event) {
+    // Prevent the default behavior of the anchor tag
+    event.preventDefault();
 
-function addToFavourites(recipeLabel) {
-    // Retrieve the current favorites from local storage
-    const favourites = getFromLocalStorage(favListKey) || [];
+    // Get the recipe label, image, and URL from the clicked item
+    const recipeLabel = event.target.closest('.item').querySelector('.title').textContent;
+    const recipeImage = event.target.closest('.item').querySelector('img').src;
+    const recipeURL = event.target.closest('.item').querySelector('.view-btn').href;
+
+    // Retrieve the current favorites from local storage or initialize an empty array
+    let favourites = getFromLocalStorage('favourites') || [];
 
     // Check if the recipe is already in favorites
-    if (!favourites.includes(recipeLabel)) {
-        // Add the recipe label to the favorites
-        favourites.push(recipeLabel);
+    const existingFavourite = favourites.find(fav => fav.label === recipeLabel);
+    if (!existingFavourite) {
+        // Add the recipe to the favorites
+        favourites.push({ label: recipeLabel, image: recipeImage, url: recipeURL });
         // Save the updated favorites back to local storage
-        saveToLocalStorage(favListKey, favourites);
+        saveToLocalStorage('favourites', favourites);
 
         // Optional: Provide feedback to the user
         alert(`${recipeLabel} added to favourites!`);
-            
     } else {
         // Optional: Provide feedback if the recipe is already in favorites
-        alert(`${recipeLabel} is already in your favuorites!`);
+        alert(`${recipeLabel} is already in your favourites!`);
     }
 }
 
 function saveToLocalStorage(key, value) {
-    
     localStorage.setItem(key, JSON.stringify(value));
 }
 
 function getFromLocalStorage(key) {
     const storedItems = localStorage.getItem(key);
-
     return JSON.parse(storedItems);
 }
 
 
-function DisplayFavourites(Key, displayFav) {
-    const storedItems = localStorage.getItem(Key);
-    const displayDiv = document.getElementById(displayFav);
-
-    if (storedItems) {
-        const favorites = JSON.parse(storedItems);
-
-        // Clear the existing content of the displayDiv
-        displayDiv.innerHTML = '';
-
-        favorites.forEach(favorite => {
-            // Create elements for each favorite item
-            const favoriteItem = document.createElement('div');
-            favoriteItem.classList.add('fav-card');
-
-            const imageElement = document.createElement('img');
-            // imageElement.src = favorite.img;
-            imageElement.src = favorite[2];
-            imageElement.alt = 'Favorite Recipe Image';
-
-            const labelElement = document.createElement('p');
-            labelElement.textContent = `Label: ${favorite.label}`;
-
-            const urlElement = document.createElement('a');
-            urlElement.href = favorite.url;
-            urlElement.target = '_blank';
-            urlElement.textContent = 'View Recipe';
-
-            // Append elements to the favoriteItem div
-            favoriteItem.appendChild(imageElement);
-            favoriteItem.appendChild(labelElement);
-            favoriteItem.appendChild(urlElement);
-
-            // Append the favoriteItem div to the displayDiv
-            displayDiv.appendChild(favoriteItem);
-        });
-    } else {
-        // Display a message when there are no favorites
-        displayDiv.innerHTML = '<p class="favWhite">No favorites available.</p>';
-    }
-}
 
 // -----user review javascript functions code starts here------
 
@@ -205,40 +175,6 @@ function storeUserData() {
 }
 
 // ======== function to shop the ingredients of any of the item when the shoping icon is clicked===
-
-
-// async function handleShoppingIconClick(event) {
-//     event.preventDefault(); // Prevent default link behavior
-
-//     const item = event.target.closest('.item');
-//     const label = item.querySelector('.title').textContent;
-//     const ingredientLines = item.querySelector('.item-data').textContent.split('\n');
-
-//     // Call the function to add or update the recipe ingredients in the shopping list
-//     addToShoppingList(label, ingredientLines);
-// }
-
-// function addToShoppingList(label, ingredients) {
-//     // Retrieve existing shopping list from local storage or initialize an empty array
-//     let shoppingList = JSON.parse(localStorage.getItem('shoppingList')) || [];
-
-//     // Check if the label already exists in the shopping list
-//     const existingItemIndex = shoppingList.findIndex(item => item.label === label);
-
-//     if (existingItemIndex !== -1) {
-//         // If the label already exists, update the ingredients
-//         shoppingList[existingItemIndex].ingredients = ingredients;
-//     } else {
-//         // If the label doesn't exist, add a new item to the shopping list
-//         shoppingList.push({ label: label, ingredients: ingredients });
-//     }
-
-//     // Store the updated shopping list array in local storage
-//     localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
-
-//     // Optional: Provide feedback to the user
-//     alert(`${label} ingredients added to the shopping list!`);
-// }
 
 async function handleShoppingIconClick(event) {
     event.preventDefault(); // Prevent default link behavior

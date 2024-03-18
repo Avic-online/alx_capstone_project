@@ -30,6 +30,7 @@ html {
     font-family: 'Nunito';
     font-size: 12px;
     font-weight: 600;
+    color: whitesmoke;
     background-color: var(--primary-color);
 }
 
@@ -147,7 +148,7 @@ section{
     outline: none;
     font-size: 2rem;
 }
-.formFetcher ion-icon{
+.formFetcher > svg{
     width: 9%;
     font-size: 3rem;
     margin: -9px;
@@ -237,7 +238,6 @@ a > .w-8 {
 
  #review-ctn {
     border: 2px solid white;
-    /* background-color: rgb(38, 36, 36); */
     width: 30%;
     height: auto;
     display: none;
@@ -245,15 +245,34 @@ a > .w-8 {
     align-items: center;
     margin-left: 35%;
     margin-top: 20px;
-    padding: 20px 20px;
     color:whitesmoke;
     overflow: auto;
+    background-color: rgb(27, 26, 26);
+    padding: 20px;
+    border-radius: 10px;
 }
 
+#review-ctn > h3 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    opacity: 80%;
+}
 
-#reviewSubmit {
+#submitBtn {
     margin-left: 70%;
-} */
+    background-color: #404041;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+} 
+
+#submitBtn:hover {
+    opacity: 90%;
+}
 
 /* general page starts styling here */
 
@@ -268,7 +287,10 @@ p {
 \*____________________________________________*/
 
 .fav-h1 {
-    font-family: 'Nunito';
+    font-family: Arial;
+    color: whitesmoke;
+    font-style: italic;
+    opacity: 50%;
     font-weight: 600;
     text-align: center;
     margin-top: 5%;
@@ -284,37 +306,59 @@ p {
 }
 
 .fav-card {
-    border: 1px solid red;
-    background-color: orange;
-    width: 100%;
-    height: 100px;
-    padding: 10px 10px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(27, 26, 26);
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
 }
+
 .fav-card img {
-    width: 20%;
-}
-
-.fav-card .title{
-    color: whitesmoke;
-    font-weight: 4600;
-}
-
-.fav-card .view-btn{
-    text-decoration: none;
-    background-color: #404041;
     width: 100px;
-    height: auto;
-    text-align: center;
-    padding: 10px;
-    color: whitesmoke;
-    border-radius: 2px;
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 5px;
 }
-.fav-card .view-btn:hover{
+
+.fav-card h2.title {
+    margin: 0;
+    color: whitesmoke;
+    font-family: Arial;
+}
+
+.view-btn {
+    padding: 10px 20px;
+    background-color: #404041;
+    color: whitesmoke;
+    font-family: Arial;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.view-btn:hover {
     opacity: 90%;
 }
+
+a svg {
+    width: 24px;
+    height: 24px;
+    fill: #333;
+    margin-left: 10px;
+}
+
+a svg:hover {
+    fill: #ff0000;
+    cursor: pointer;
+}
+
+
+
 /*____________________________________________*\
         #REVIEW RECIPE PAGE STYLING
 \*____________________________________________*/
@@ -368,53 +412,50 @@ p {
     margin-top: 2%;
     margin-bottom: 20px;
 }
-.review-card {
-    border: 1px solid red;
-    background-color: orange;
-    width: 100%;
-    height: 100px;
-    padding: 10px 10px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-evenly; */
-}
 .review-h1{
-    font-family: 'Nunito';
+    font-family: Arial;
+    color: whitesmoke;
+    font-style: italic;
+    opacity: 50%;
     font-weight: 600;
     text-align: center;
     margin-top: 5%;
-    color: whitesmoke;
 }
 
 /* layout of review items */
 
 .review {
-    height: auto;
+    border: 1px solid #ccc;
+    background-color: rgb(27, 26, 26);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: rgb(37, 37, 37);
-    display: flex;
-    overflow: auto;
+    width: auto;
+    font-family: Arial;
 }
 
-.review p {
+/* Style for username */
+.review p:first-child {
+    font-weight: bold;
+    margin-bottom: 2px;
     color: whitesmoke;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+  }
+  
+  /* Style for rating */
+  .review  p {
+    color: #ffa500;
+    font-size: 16px;
+  }
+  
+  /* Style for description */
+  .review p:last-child {
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: whitesmoke;
     font-size: 12px;
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.review p:first-child{
-    font-size: 18px;
-    padding-right: 20%;
-}
-.review p:last-child{
-    padding-left: 20%;
-}
-
+    font-style: italic;
+  }
 
 /*____________________________________________*\
         #SHOPPING PAGE STYLING
@@ -471,6 +512,7 @@ p {
 }
 #shopRetrieve{
     border: 1px solid white;
+    border-radius: 5px;
     border-style: dashed;
     height: auto;
     width: 80%;
@@ -482,7 +524,7 @@ p {
     width: 100%;
     height: auto;
     text-align: center;
-    background-color: aquamarine;
+    background-color: #404041;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -491,7 +533,7 @@ p {
     padding: 5px 5px;
 }
 .ingredient{
-    background-color: whitesmoke;
+    background-color: rgb(27, 26, 26);
     width: 100%;
     height: auto;
     text-align: center;
@@ -542,6 +584,19 @@ p {
         width: 100%;
     }
 
+    /* mobile screen media query for favourite page */
+    .fav-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: rgb(27, 26, 26);
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+        gap: 10px;
+        align-items: center;
+        overflow: hidden;
+    }
+
     /* mobile screen media query for reviews on review page */
     .review {
         height: auto;
@@ -561,7 +616,7 @@ p {
         padding-left: 0%;
     }
 
-    /* mobile screen media query for reviews on review page */
+    /* mobile screen media query for shopping page */
     .shop-h1{color: red; opacity: 100%;}
     .label{
         font-size: 18px;

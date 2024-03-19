@@ -1,4 +1,4 @@
-// Retrieve reviews from local storage or initialize an empty array if no reviews exist
+// Retrieve reviews from local storage || initialize an empty array if no reviews exist
 const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
 // Get the container element

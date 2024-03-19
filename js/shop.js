@@ -30,7 +30,7 @@ function displayShoppingList() {
             ingredientLines.forEach(line => {
                 // Check if the line is not empty
                 if (line.trim() !== '') {
-                    // Construct the Walmart query URL
+                    // query Walmart 
                     const walmartQuery = `https://www.walmart.com/search/?query=${encodeURIComponent(line.trim())}`;
 
                     // Create a link for each line

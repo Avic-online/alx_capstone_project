@@ -1,6 +1,6 @@
 // javascript code for our chefs recipe app 
 
-// const container = document.querySelector('.container');
+
 const searchForm = document.querySelector('.formFetcher');
 const mainSearchBTN = document.querySelector('.main-search')
 const searchResultDiv = document.querySelector('.search-result');
@@ -79,7 +79,7 @@ function generateHTML(results) {
         </div>
         `
     })
-    // generate inner html in the search result div
+    // generate inner html in the search result div here
     searchResultDiv.innerHTML = generatedHTML;
 
     // Add event listeners to shopping icons
@@ -94,22 +94,22 @@ function generateHTML(results) {
 }
 
 
-//============= adding item to favourite list with favourite icon starts here =====
+//============= adding item to favourite list with favourite icon being clicked starts here =====
 
 
 async function addToFavorites(event) {
-    // Prevent the default behavior of the anchor tag
+    // default behavior of the anchor tag error handled
     event.preventDefault();
 
-    // Get the recipe label, image, and URL from the clicked item
+    // the recipe label, image, and URL from the clicked item get from parents
     const recipeLabel = event.target.closest('.item').querySelector('.title').textContent;
     const recipeImage = event.target.closest('.item').querySelector('img').src;
     const recipeURL = event.target.closest('.item').querySelector('.view-btn').href;
 
-    // Retrieve the current favorites from local storage or initialize an empty array
+    // Retrieval the current favorites from local storage || initialize an empty array
     let favourites = getFromLocalStorage('favourites') || [];
 
-    // Check if the recipe is already in favorites
+    // conditional statement to check if recipe is already in favorites
     const existingFavourite = favourites.find(fav => fav.label === recipeLabel);
     if (!existingFavourite) {
         // Add the recipe to the favorites
@@ -117,18 +117,20 @@ async function addToFavorites(event) {
         // Save the updated favorites back to local storage
         saveToLocalStorage('favourites', favourites);
 
-        // Optional: Provide feedback to the user
+        //  Provide feedback to the user
         alert(`${recipeLabel} added to favourites!`);
     } else {
-        // Optional: Provide feedback if the recipe is already in favorites
+        // Provide feedback if the recipe is already in favorites
         alert(`${recipeLabel} is already in your favourites!`);
     }
 }
 
+//function to set value to local storage in json format
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
 
+//function to retrieve key from storage as an Object
 function getFromLocalStorage(key) {
     const storedItems = localStorage.getItem(key);
     return JSON.parse(storedItems);
@@ -143,7 +145,7 @@ function addReview(){
     add_review.style.display = 'flex'
 }
 
-// code for submission of user input to local storage
+// ----code for submission of user input to local storage
 const submitBtn = document.getElementById('submitBtn');
 
 // Add event listener to the form submission
@@ -154,6 +156,7 @@ submitBtn.addEventListener('click', function(event) {
     storeUserData();
 });
 
+// function to store the input from users on review in local storage
 function storeUserData() {
     const username = document.getElementById('username').value;
     const rating = document.getElementById('rating').value;
@@ -175,7 +178,7 @@ function storeUserData() {
     // Store the updated reviews array in local storage
     localStorage.setItem('reviews', JSON.stringify(reviews));
 
-    // Optional: Provide feedback to the user
+    // Provide feedback to the user
     alert('Review submitted successfully!');
 }
 

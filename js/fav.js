@@ -2,15 +2,18 @@
 
 document.addEventListener('DOMContentLoaded', displayFavorites);
 
+// function to output the favourites recipes from local storage in favourite html page
 function displayFavorites() {
     const favoritesContainer = document.getElementById('displayFav');
     const favorites = getFromLocalStorage('favourites') || [];
-
+    
+    // condition if there are no favourite recipes in local storage
     if (favorites.length === 0) {
         favoritesContainer.innerHTML = '<p>No favorite recipes found.</p>';
         return;
     }
 
+    // method to get each recipe in html format
     let favoritesHTML = '';
     favorites.forEach(recipe => {
         favoritesHTML +=
@@ -28,9 +31,11 @@ function displayFavorites() {
         `;
     });
 
+    // to output the favourites in the display div of the favourite homepage
     favoritesContainer.innerHTML = favoritesHTML;
 }
 
+// function to remove from local storage whenever the close icon is clicked
 function removeFromFavorites(event, recipeLabel) {
     event.preventDefault();
 
